@@ -1,2 +1,2 @@
 # IT5007
- Tutorial anmd Project
+ Tutorial and Project
