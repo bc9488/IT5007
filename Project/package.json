@@ -1,0 +1,33 @@
+{
+    "name": "it5007-project",
+    "version": "1.0.0",
+    "description": "IT5007-project",
+    "main": "index.js",
+    "scripts": {
+      "start": "nodemon -w server server/server.js",
+      "compile": "babel src --out-dir public",
+      "watch": "babel src --out-dir public --watch --verbose",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/bc9488/IT5007.git"
+    },
+    "author": "bc9488@yahoo.com.sg",
+    "license": "MIT",
+    "homepage": "https://github.com/bc9488/IT5007",
+    "dependencies": {
+      "express": "^4.17.1",
+      "nodemon": "^1.18.9"
+    },
+    "devDependencies": {
+      "@babel/cli": "^7.15.7",
+      "@babel/core": "^7.15.8",
+      "@babel/preset-env": "^7.2.3",
+      "@babel/preset-react": "^7.14.5"
+    },
+    "bugs": {
+      "url": "https://github.com/bc9488/IT5007"
+    }
+  }
+  
