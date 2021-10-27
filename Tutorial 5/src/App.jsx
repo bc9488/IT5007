@@ -84,11 +84,12 @@ class IssueDelete extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const form = document.forms.issueAdd;
+    const form = document.forms.issueDelete;
     const issue = {
       customerName: form.customerName.value, phoneNum: form.phoneNum.value,
       
     }
+    this.props.deleteIssue(issue);
     form.customerName.value = ""; form.phoneNum.value = "";
   }
 
@@ -133,6 +134,7 @@ class IssueList extends React.Component {
     super();
     this.state = { issues: [] };
     this.createIssue = this.createIssue.bind(this);
+    this.deleteIssue = this.deleteIssue.bind(this);
   }
 
   componentDidMount() {
@@ -166,6 +168,19 @@ class IssueList extends React.Component {
     }
   }
 
+  async deleteIssue(issue) {
+    const query = `mutation issueDelete($issue: IssueInputs!) {
+      issueDelete(issue: $issue) {
+        id
+      }
+    }`;
+
+    const data = await graphQLFetch(query, { issue });
+    if (data) {
+      this.loadData();
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -176,7 +191,7 @@ class IssueList extends React.Component {
         <hr />
         <IssueAdd createIssue={this.createIssue} />
         <hr />
-        <IssueDelete />
+        <IssueDelete deleteIssue={this.deleteIssue}/>
       </React.Fragment>
     );
   }

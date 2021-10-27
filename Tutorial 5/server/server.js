@@ -43,6 +43,7 @@ const resolvers = {
   Mutation: {
     setAboutMessage,
     issueAdd,
+    issueDelete,
   },
   GraphQLDate,
 };
@@ -76,6 +77,13 @@ async function issueAdd(_, { issue }) {
   const savedIssue = await db.collection('issues')
     .findOne({ _id: result.insertedId });
   return savedIssue;
+}
+
+async function issueDelete(_, { issue }) {
+ 
+  const result = await db.collection('issues').deleteOne({customerName : issue.customerName});
+
+  return;
 }
 
 async function connectToDb() {
