@@ -5,6 +5,8 @@ const { GraphQLScalarType } = require('graphql');
 const { Kind } = require('graphql/language');
 const { MongoClient } = require('mongodb');
 
+
+
 const url = 'mongodb://localhost/issuetracker';
 
 // Atlas URL  - replace UUU with user, PPP with password, XXX with hostname
@@ -103,8 +105,14 @@ const server = new ApolloServer({
 });
 
 const app = express();
+const { apolloExpress, graphiqlExpress } = require('apollo-server');
+const { makeExecutableSchema } = require('graphql-tools');
 
 app.use(express.static('public'));
+
+app.use('/graphiql', graphiqlExpress({
+  endpointURL: '/graphql',
+}));
 
 server.applyMiddleware({ app, path: '/graphql' });
 
@@ -118,3 +126,8 @@ server.applyMiddleware({ app, path: '/graphql' });
     console.log('ERROR:', err);
   }
 })();
+
+
+
+
+
