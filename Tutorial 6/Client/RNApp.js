@@ -12,7 +12,6 @@ function jsonDateReviver(key, value) {
   return value;
 }
 
-
 function IssueRow(props) {
   const issue = props.issue;
   return (
@@ -30,7 +29,7 @@ function IssueTable(props) {
   return (
     <View style={styles.container}>
         <Table borderstyle = {{borderColor: 'black'}}>
-            <Row data={['ID','Customer Name','Phone Number',"Time Stamp"}, style={styles.headstyle} />
+            <Row data={['ID','Customer Name','Phone Number',"Time Stamp"]} style={styles.headstyle} />
             {issueRows}
         </Table>
     </View>
