@@ -63,4 +63,10 @@ node scripts/trymongo.js
 mongo issuetracker scripts/init.mongo.js
 ```
 
-npm
+screen mongod
+mongo
+
+node app.js
+
+yarn
+react-native run-android
