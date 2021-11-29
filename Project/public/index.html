@@ -7,6 +7,20 @@
   <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/polyfill@7/dist/polyfill.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--- to link the tabs with the respective html pages --> 
+  <script>
+    $(document).ready(function(){
+       $('#Dashboard').load("dashboard.html");
+       $('#Trails').load("trails.html");
+       $('#Repair').load("repair.html");
+       $('#SelfDIYGuide').load("selfDIY.html");
+       $('#RidingEtiquette').load("ridingEtiquette.html");
+       $('#defaultOpen').click();
+    });
+    </script>
+
+  <script src="/App.js"></script>
 
   <style>
     table.bordered-table th, td {border: 1px solid silver; padding: 4px;}
@@ -25,7 +39,7 @@
   <button class="tablinks" onclick="openContent(event, 'SelfDIYGuide')">Self-DIY Guide</button>
   <button class="tablinks" onclick="openContent(event, 'RidingEtiquette')">Riding Etiquette</button>
 
-  <form name="searchContent" onSubmit={this.handleSubmit}>
+  <form name="searchContent" onSubmit="openContent(event, 'Trails')">
     <input type="text" name="search" placeholder="Search.." />
     <button class="tablink" type="submit">Search</button>
   </div>
@@ -37,26 +51,25 @@
   
   <div id="Trails" class="tabcontent">
     <h3>Trails Listings</h3>
-    <p>Work in Progress</p> 
   </div>
   
   <div id="Repair" class="tabcontent">
-    <h3>Repair Guides</h3>
-    <p>Work in Progress</p>
+    <h3>Repair Guides</h3>  
   </div>
 
   <div id="SelfDIYGuide" class="tabcontent">
     <h3>Self DIY Guide</h3>
-    <p>Work in progress</p>
   </div>
 
   <div id="RidingEtiquette" class="tabcontent">
     <h3>Local Riding Etiquette</h3>
-    <p>Work in progress</p>
   </div>
 
-<!--- <div id="contents"></div> --> 
- <script src="/App.js"></script>
+  <script>
+
+    console.log(performance.getEntries()[10]);
+ 
+   </script>
 
 </body>
 
