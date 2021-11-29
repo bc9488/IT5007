@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+.checked {
+  color: orange;
+}
+
+
+.container {
+  overflow: hidden;
+  margin-left: 220px;
+  position: right;
+  top: 0;
+}
+
+.filterDiv {
+  background-color:white;
+  color: #000000;
+  width: 100%;
+  line-height: 100px;
+  float: right;
+  text-align: left;
+  margin: 5px;
+  display: none; /* Hidden by default */
+  border-bottom: solid;
+  padding-bottom: 5px;
+}
+
+.box_content {
+  color: #000000;
+  line-height: 30px ;
+  font-size: 30px;
+  margin: 10px;
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+/* Style the buttons */
+.btn {
+  font-size: 20px;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Add a light grey background on mouse-over */
+.btn:hover {
+  background-color: #ddd;
+}
+
+/* Add a dark background to the active button */
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+
+/* The side navigation menu */
+.sidebar {
+  height: 100%;
+  width: 210px;
+  position: left;
+  left: 0;
+  background-color:white;
+  overflow-x: hidden;
+  padding-top: 20px;
+  float:left;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+h2 {
+  font-family:'Times New Roman', Times, serif;
+  font-weight: bold; 
+  text-align: center;
+}
+
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+}
+
+</style>
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    <title>Repair/Maintenance/Transport Services Page</title>
+</head>
+  
+<body>
+
+    <!-- Side Filter Bar -->
+
+<div class="sidebar">
+<div id="myBtnContainer">
+    <h2 style="background-color:wheat">FILTER YOUR RESULTS</h2>
+    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+    <h3>Services</h3>
+    <button class="btn" onclick="filterSelection('repair_onsite')"> Repair(on-site)    </button>
+    <button class="btn" onclick="filterSelection('repair_instore')"> Repair(in-store)</button>
+    <button class="btn" onclick="filterSelection('transport')"> Transport  </button> 
+    <button class="btn" onclick="filterSelection('transport247')"> 24/7 Transport</button>
+    <button class="btn" onclick="filterSelection('rescue')"> Rescue</button>
+    <h3>Location</h3>
+    <button class="btn" onclick="filterSelection('north')"> North</button>
+    <button class="btn" onclick="filterSelection('south')"> South</button>
+    <button class="btn" onclick="filterSelection('east')"> East</button>
+    <button class="btn" onclick="filterSelection('west')"> West</button>
+    <button class="btn" onclick="filterSelection('central')"> Central</button>
+    <h3>User Ratings</h3>
+    <button class="btn" onclick="filterSelection('fivestar')"> 
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span> 
+      <span style="color:blue;">& Up</span>
+    </button>
+    <button class="btn" onclick="filterSelection('fourstar')"> 
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span> 
+      <span style="color:blue;">& Up</span>
+    </button>
+    <button class="btn" onclick="filterSelection('threestar')"> 
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span> 
+      <span style="color:blue;">& Up</span>
+    </button>
+    <button class="btn" onclick="filterSelection('twostar')"> 
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span> 
+      <span style="color:blue;">& Up</span>
+    </button>
+    <button class="btn" onclick="filterSelection('onestar')"> 
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span> 
+      <span class="fa fa-star"></span> 
+      <span style="color:blue;">& Up</span>
+    </button>
+  </div>
+
+<!-- Each servicing item -->
+</div> 
+  <div class="container">
+    <div class="filterDiv central repair_onsite repair_instore onestar twostar threestar">
+      <div class="box_content">
+        <p>
+          <span style="margin-left:10px;">
+            <a href="./servicesPages/s_01_aire.html" target="_blank">AIRE MTB (Chestnut Nature Park)</a>
+          </span>
+          <span style="float:right;margin-right: 9px;">Services: Repair(on-site), Repair(in-store)</span>
+          <br>
+          <span style="margin-left:10px;" class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+        </p>
+      </div>
+    </div>
+    <div class="filterDiv north repair_instore transport transport247 rescue onestar twostar threestar fourstar fivestar">
+      <div class="box_content">
+
+        <p>
+          <span style="margin-left:10px;">
+            <a href="./servicesPages/s_02_aloha.html" target="_blank">Aloha Bicycle Transport</a>
+          </span>
+          <span style="float:right;">Services: Repair(in-store), Transport, 24/7 Transport, Rescue</span>
+          <br>
+          <span style="margin-left:10px;" class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+        </p>
+      </div>
+    </div>
+
+    <div class="filterDiv east repair_instore onestar twostar threestar fourstar">
+      <div class="box_content">
+        <p>
+          <span style="margin-left:10px;">
+            <a href="./servicesPages/s_03_khcycle.html" target="_blank">Khcycle (East Coast Park)</a>
+          </span>
+          <span style="float:right;">Services: Repair(in-store)</span>
+          <br>
+          <span style="margin-left:10px;" class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+        </p>
+      </div>
+    </div>
+
+    <div class="filterDiv east repair_instore onestar twostar threestar fourstar fivestar">
+      <div class="box_content">
+        <p>
+          <span style="margin-left:10px;">
+            <a href="./servicesPages/s_04_neweracycle.html" target="_blank">New Era Cycle</a>
+          </span>
+          <span style="float:right;">Services: Repair(in-store)</span>
+          <br>
+          <span style="margin-left:10px;" class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+        </p>
+      </div>
+    </div>
+
+    <div class="filterDiv west repair_instore green onestar twostar threestar fourstar">
+      <div class="box_content">
+        <p>
+          <span style="margin-left:10px;">
+            <a href="./servicesPages/s_05_rodalinkjurong.html" target="_blank">Rodalink (Jurong East)</a>
+          </span>
+          <span style="float:right;">Services: Repair(in-store)</span>
+          <br>
+          <span style="margin-left:10px;" class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star "></span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+  for (i = 0; i < x.length; i++) {
+    RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
+  }
+}
+
+// Show filtered elements
+function AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+// Hide elements that are not selected
+function RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current control button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
+
+
+
+</script>
+<script>
+
+  console.log(performance.getEntriesByType('resource'));
+
+ </script>
+</body>
+  
+</html>

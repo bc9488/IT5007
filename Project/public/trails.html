@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+/* to show the star rating */
+.checked {
+  color: orange;
+}
+
+
+.container {
+  overflow: hidden;
+  margin-left: 220px;
+  position: right;
+  top: 0;
+}
+
+.filterDiv {
+  background-color:white;
+  color: #000000;
+  width: 100%;
+  line-height: 100px;
+  float: right;
+  text-align: left;
+  margin: 5px;
+  display: none; /* Hidden by default */
+  border-bottom: solid;
+  padding-bottom: 5px;
+}
+
+.box_content {
+  color: #000000;
+  line-height: 30px ;
+  font-size: 30px;
+  margin: 10px;
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+/* Style the buttons */
+.btn {
+  font-size: 20px;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Add a light grey background on mouse-over */
+.btn:hover {
+  background-color: #ddd;
+}
+
+/* Add a dark background to the active button */
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+
+/* The side navigation menu */
+.sidebar {
+  height: 100%;
+  width: 210px;
+  position: left;
+  left: 0;
+  background-color:white;
+  overflow-x: hidden;
+  padding-top: 20px;
+  float:left;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+h2 {
+  font-family:'Times New Roman', Times, serif;
+  font-weight: bold; 
+  text-align: center;
+}
+
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+}
+
+</style>
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    <title>Trails Listing Page</title>
+</head>
+  
+<body>
+    <h1 style="margin:0;padding:0;text-align: center;">Trail Listings</h1>
+
+<!-- Side Filter bar -->
+<div class="sidebar">
+<div id="myBtnContainer">
+    <h2 style="background-color:wheat">FILTER YOUR RESULTS</h2>
+    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+    <h3>Difficulty</h3>
+    <button class="btn" onclick="filterSelection('blue')"> Blue
+      <span class="iconify" data-icon="akar-icons:square-fill" style="color: blue;" data-width="20" data-height="20"></span>
+      <!-- the class "iconify" is for the symbols for the different difficulties of trail -->
+    </button>
+    <button class="btn" onclick="filterSelection('green')"> Green
+      <span class="iconify" data-icon="akar-icons:circle-fill" style="color: green;" data-width="20" data-height="20"></span>
+    </button>
+    <button class="btn" onclick="filterSelection('blackDiamond')"> Black
+      <span class="iconify" data-icon="emojione-monotone:large-orange-diamond" style="color: black;" data-width="20" data-height="20"></span></button>
+    <button class="btn" onclick="filterSelection('doubleblkDiamond')"> Double Black
+      <span class="iconify" data-icon="emojione-monotone:large-orange-diamond" style="color: black;" data-width="20" data-height="20"></span>
+      <span class="iconify" data-icon="emojione-monotone:large-orange-diamond" style="color: black;" data-width="20" data-height="20"></span>
+    </button>
+    <h3>Location</h3>
+    <button class="btn" onclick="filterSelection('north')"> North</button>
+    <button class="btn" onclick="filterSelection('south')"> South</button>
+    <button class="btn" onclick="filterSelection('east')"> East</button>
+    <button class="btn" onclick="filterSelection('west')"> West</button>
+    <button class="btn" onclick="filterSelection('central')"> Central</button>
+    <h3>User Ratings</h3>
+    <button class="btn" onclick="filterSelection('fivestar')"> 
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span> 
+      <span style="color:blue;">& Up</span>
+    </button>
+    <button class="btn" onclick="filterSelection('fourstar')"> 
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span> 
+      <span style="color:blue;">& Up</span>
+    </button>
+    <button class="btn" onclick="filterSelection('threestar')"> 
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span> 
+      <span style="color:blue;">& Up</span>
+    </button>
+    <button class="btn" onclick="filterSelection('twostar')"> 
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span> 
+      <span style="color:blue;">& Up</span>
+    </button>
+    <button class="btn" onclick="filterSelection('onestar')"> 
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span> 
+      <span class="fa fa-star"></span> 
+      <span style="color:blue;">& Up</span>
+    </button>
+  </div>
+
+<!-- Each Trail Listing item -->
+</div> 
+  <div class="container">
+    <div class="filterDiv central doubleblkDiamond onestar twostar threestar fourstar fivestar">
+      <div class="box_content">
+        <img src="https://drive.google.com/uc?export=view&id=1Sb0xRke87f7Urz3BdP3Y0r2knBAu3OMZ" alt="Bukit Timah MTB" style="width:20%; float:left">
+        <p>
+          <span style="margin-left:10px;">
+            <a href="./trailPages/01_BukitTimahMTB.html" target="_blank">Bukit Timah Mountain Bike Trail</a>
+          </span>
+          <span style="float:right;margin-right: 15px;">Length: 6.4km</span>
+          <br>
+          <span style="margin-left:10px;" class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="iconify" data-icon="emojione-monotone:large-orange-diamond" style="float:right; margin-right: 8px; color: black;" data-width="30" data-height="30"></span>
+          <span class="iconify" data-icon="emojione-monotone:large-orange-diamond" style="float:right; color: black;" data-width="30" data-height="30"></span>
+          <span style="float:right;">Difficulty: </span>
+        </p>
+      </div>
+    </div>
+    <div class="filterDiv west blue onestar twostar threestar fourstar">
+      <div class="box_content">
+        <img src="https://drive.google.com/uc?export=view&id=1Ju7Ie4KMKYbI9uqBtk7K4L2ZVNr6UHgW" alt="Chestnut Nature Park (Southern Biking Loop)" style="width:20%; float:left">
+        <p>
+          <span style="margin-left:10px;">
+            <a href="./trailPages/02_ChestnutNatureParkSouth.html" target="_blank">Chestnut Nature Park (Southern Biking Loop)</a>
+          </span>
+          <span style="float:right;margin-right: 15px;">Length: 1.7km</span>
+          <br>
+          <span style="margin-left:10px;" class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="iconify" data-icon="akar-icons:square-fill" style="float:right; margin-right: 36px; color: blue;" data-width="30" data-height="30"></span>
+          <span style="float:right;">Difficulty: </span>
+        </p>
+      </div>
+    </div>
+
+    <div class="filterDiv west blackDiamond onestar twostar threestar fourstar fivestar">
+      <div class="box_content">
+        <img src="https://drive.google.com/uc?export=view&id=1RtubKuOl8pZlUn2PuUuNDxGYYGW_3ML6" alt="Chestnut Nature Park (Northen Biking Loop)" style="width:20%; float:left">
+        <p>
+          <span style="margin-left:10px;">
+            <a href="./trailPages/03_ChestnutNatureParkNorth.html" target="_blank">Chestnut Nature Park (Northern Biking Loop)</a>
+          </span>
+          <span style="float:right;margin-right: 15px;">Length: 6.5km</span>
+          <br>
+          <span style="margin-left:10px;" class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="iconify" data-icon="emojione-monotone:large-orange-diamond" style="float:right; margin-right: 36px; color: black;" data-width="30" data-height="30"></span>
+          <span style="float:right;">Difficulty: </span>
+        </p>
+      </div>
+    </div>
+
+    <div class="filterDiv east blackDiamond onestar twostar threestar fourstar">
+      <div class="box_content">
+        <img src="https://drive.google.com/uc?export=view&id=1O32gunN3g_mgQ_xj14np_jsYZtafQ645" alt="Ketam Mountain Bike Park" style="width:20%; float:left">
+        <p>
+          <span style="margin-left:10px;">
+            <a href="./trailPages/04_KetamMTB.html" target="_blank">Ketam Mountain Bike Park</a>
+          </span>
+          <span style="float:right;">Length: 10.7km</span>
+          <br>
+          <span style="margin-left:10px;" class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="iconify" data-icon="emojione-monotone:large-orange-diamond" style="float:right;margin-right: 36px; color: black;" data-width="30" data-height="30"></span>
+          <span style="float:right;">Difficulty: </span>
+        </p>
+      </div>
+    </div>
+
+    <div class="filterDiv north green onestar twostar threestar">
+      <div class="box_content">
+        <img src="https://drive.google.com/uc?export=view&id=1sUY7Nc-6B-l8Tix9KzahCJZ30AmiuQgK" alt="T15 Hiking and Cycling Trail" style="width:20%; float:left">
+        <p>
+          <span style="margin-left:10px;">
+            <a href="./trailPages/05_T15HikingCycling.html" target="_blank">T15 Hiking and Cycling Trail</a>
+          </span>
+          <span style="float:right;margin-right: 15px;">Length: 4.4km</span>
+          <br>
+          <span style="margin-left:10px;" class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star "></span>
+          <span class="fa fa-star "></span>
+          <span class="iconify" data-icon="akar-icons:circle-fill" style="float:right;margin-right: 36px; color: green;" data-width="30" data-height="30"></span>
+          <span style="float:right;">Difficulty: </span>
+        </p>
+      </div>
+    </div>
+
+
+  </div>
+
+<script>
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+  for (i = 0; i < x.length; i++) {
+    RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
+  }
+}
+
+// Show filtered elements
+function AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+// Hide elements that are not selected
+function RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current control button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+ 
+</script>
+
+<script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+
+<script>
+  console.log(performance.getEntriesByType('resource'));
+  
+ </script>
+</body>
+  
+</html>

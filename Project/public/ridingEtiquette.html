@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+.checked {
+  color: orange;
+}
+
+
+.container {
+  overflow: hidden;
+  margin-left: 220px;
+  position: right;
+  top: 0;
+}
+
+.filterDiv {
+  background-color:white;
+  color: #000000;
+  width: 100%;
+  line-height: 100px;
+  float: right;
+  text-align: left;
+  margin: 5px;
+  display: none; /* Hidden by default */
+  padding-bottom: 5px;
+}
+
+.box_content {
+  color: #000000;
+  line-height: 35px ;
+  font-size: 30px;
+  margin: 10px;
+  
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+/* Style the buttons */
+.btn {
+  font-size: 20px;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Add a light grey background on mouse-over */
+.btn:hover {
+  background-color: #ddd;
+}
+
+/* Add a dark background to the active button */
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+
+/* The side navigation menu */
+.sidebar {
+  height: 100%;
+  width: 210px;
+  position: left;
+  left: 0;
+  background-color:white;
+  overflow-x: hidden;
+  padding-top: 20px;
+  float:left;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+h2 {
+  font-family:'Times New Roman', Times, serif;
+  font-weight: bold; 
+  text-align: center;
+}
+
+h3 {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: larger;
+}
+
+</style>
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    <title>Riding Etiquette</title>
+</head>
+  
+<body>
+
+    <!-- Control buttons -->
+
+<div class="sidebar">
+<div id="myBtnContainer">
+    <h2 style="background-color:wheat">FILTER YOUR RESULTS</h2>
+    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+    <h3>Location</h3>
+    <button class="btn" onclick="filterSelection('singapore')"> Singapore</button>
+  </div>
+</div> 
+  <div class="container">
+    <div class="filterDiv singapore" style="border-bottom:none;">
+      <div class="box_content" style="margin-left:10px;">
+        <h3>Bicycle Criteria</h3>
+            <ul>
+                <li>Max weight: 20kg</li>
+                <li>Max width: 70cm</li>
+            </ul>
+        <h3>Speed Limit</h3>
+            <ul>
+                <li>Cycling Path and Park Connectors(PCN): 25km/h</li>
+                <li>Footpath: 10km/h</li>
+            </ul>
+        <h3>Cycling on roads</h3>
+            <ul>
+                <li>Obey all traffic signals and travel in the same direction as the flow of traffic</li>
+                <li>Helmet is mandatory</li>
+                <li>Keep to the left of the leftmost lane</li>
+                <li>Cycle in a single file on single-lane roads and during bus lane operational hours</li>
+                <li>Front white light and rear red light are mandatory from 7pm-7am</li>
+                <li>Do not use a mobile communication device while riding</li>
+                <li>No cycling on expressways and road tunnels</li>
+            </ul>  
+      </div>
+    </div>
+    
+</div>
+
+
+<script>
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+  for (i = 0; i < x.length; i++) {
+    RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
+  }
+}
+
+// Show filtered elements
+function AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+// Hide elements that are not selected
+function RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current control button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
+
+
+
+</script>
+
+<script>
+
+  console.log(performance.getEntriesByType('resource'));
+
+ </script>
+
+
+</body>
+  
+</html>

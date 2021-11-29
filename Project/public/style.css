@@ -1,5 +1,6 @@
 #titleOfSite {
     color: rgb(160, 9, 9);
+    font-size:xx-large;
 
 }
 
@@ -20,6 +21,7 @@
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
+    font-size:large;
   }
   
   /* Change background color of buttons on hover */
@@ -39,3 +41,6 @@
     border: 1px solid #ccc;
     border-top: none;
   }
+
+
+
